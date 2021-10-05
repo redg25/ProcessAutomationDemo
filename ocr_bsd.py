@@ -1,8 +1,8 @@
 import tabula
-import os
 import pandas as pd
 
 def extract_table(file):
+    recon_file = "Bank_archive.csv"
     tables = tabula.read_pdf(file, pages='all')
     df = tables[0]
     print(df)
@@ -10,7 +10,7 @@ def extract_table(file):
     print(df)
     df.columns=['Payment date','Client','Amount paid','Invoice']
     print(df)
-    df_full = pd.read_csv("Bank_archive.csv")
+    df_full = pd.read_csv(recon_file)
     print (df_full)
     for i, row in df.iterrows():
         inv = row['Invoice']
@@ -26,8 +26,10 @@ def extract_table(file):
                            'Client':row['Client']}
             df_full = df_full.append(new_invoice,ignore_index=True)
 
-    df_full.to_csv('Bank_archive.csv',index=False)
+    df_full.to_csv(recon_file,index=False)
+    return recon_file
 
 
 
-#extract_table('Bank_Statement_Demo.pdf')
+
+

@@ -1,3 +1,4 @@
+import os
 from gead import *
 from ocr_bsd import *
 from folder_demo import get_folder_path
@@ -20,14 +21,8 @@ while True:
                 filepath = os.path.join(filepath, filename)
                 with open(filepath,'wb')as f:
                     f.write(part.get_payload(decode=True))
-                extract_table(filepath)
+                recon_file = extract_table(filepath)
+                img_report = create_histogram(recon_file)
+                pdf_file = generate_report(img_report)
+                print('yeah')
 
-    # list_attachment = email_attachment_demo('Gmailusername','gmailpw')
-    # if list_attachment != []:
-    #     for attach in list_attachment:
-    #         extract_table(attach)
-    #     img_report = create_histogram('Bank_archive.csv')
-    #     pdf_file = generate_report(img_report)
-    #     print(pdf_file)
-    # else:
-    #     print('no new email')
