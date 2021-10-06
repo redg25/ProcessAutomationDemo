@@ -16,7 +16,7 @@ class get_email_attachment_demo:
         self.mail.login(self.user, self.pw)
 
     def get_filtered_emails(self):
-        self.mail.select(self.inbox)
+        self.mail.select(self.inbox,readonly=False)
         result, ids = self.mail.uid('search', None, self.filters)
         self.emails_ids = ids[0].split()
 
