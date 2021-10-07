@@ -1,1 +1,1 @@
-.ignoretest
+.ignoretestbis.py
