@@ -17,8 +17,6 @@ def invoices_recon(df,recon_file):
     :param recon_file: a csv file with the main recon data
     :return: a csv file with the updated main recon file
     """
-    #Remove extra blank columns from tabula extraction
-    df = df.drop(df.columns[4:6], axis=1)
     #Rename columns to match main recon file
     df.columns=['Payment date','Client','Amount paid','Invoice']
     #Get a dataframe from the main recon file
